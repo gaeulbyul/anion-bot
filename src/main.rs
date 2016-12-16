@@ -241,10 +241,11 @@ fn telegram_handler(bot: &TelegramBot, req: &mut Request) -> IronResult<Response
 
 fn main() {
     println!("bot start!");
+    let host = env::var("HOST").unwrap_or("localhost".to_string());
     let port = env::var("PORT").unwrap_or("5000".to_string());
     let telegram_token = env::var("TELEGRAM_BOT_TOKEN").unwrap();
     let bot = TelegramBot::from_token(&telegram_token).unwrap();
-    let webhook_url = Url::parse(format!("https://byul.duckdns.org/telegram-bot~{}", telegram_token).as_str()).unwrap();
+    let webhook_url = Url::parse(format!("https://{}/telegram-bot~{}", host, telegram_token).as_str()).unwrap();
     bot.set_webhook(Some(webhook_url)).unwrap();
     let router = router!(
         post format!("/telegram-bot~{}", telegram_token) => move |req: &mut Request| -> IronResult<Response> {

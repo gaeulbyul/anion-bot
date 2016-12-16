@@ -1,1 +1,1 @@
-web: ./target/anion-bot
+web: ./target/release/AniON-Bot
