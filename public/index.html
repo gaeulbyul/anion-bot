@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="ko"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/mblode/marx/master/css/marx.min.css">
+  <title>Ani-ON 봇</title>
+  <style>
+    code {
+      display: inline-block;
+      padding: 1px 3px;
+      margin: 1px 3px;
+      background-color: #39f;
+      color: #fff;
+      border-radius: 3px;
+    }
+  </style>
+</head><body>
+  <main>
+    <h1>
+      Ani-ON 봇 (<a href="https://telegram.me/ani_on_bot">@ani_on_bot</a>)
+    </h1>
+    <p><b>Ani-ON 봇</b>은 애니편성표 봇입니다. 데이터는 <a href="http://anissia.net">애니시아</a>에서 가져옵니다.</p>
+    <p>모바일 웹용 애니편성표: <a href="https://anion.herokuapp.com">Ani-ON</a></p>
+    <h2>사용법</h2>
+    <ul>
+      <li><code>/list</code>: 오늘의 목록</li>
+      <li><code>/list {요일}</code>: 요일별 목록 (요일 = 일월화수목금토)</li>
+      <li><code>/cap {ID}</code>: 자막 목록 (ID = 애니별 고유번호 (#xxxx))</li>
+      <li><code>/start</code> or <code>/help</code>: 도움말 메시지 출력</li>
+    </ul>
+    <h2>사용기술</h2>
+    <ul>
+      <li><a href="https://www.rust-lang.org">Rust</a></li>
+      <li><a href="http://ironframework.io">Iron Framework</a></li>
+      <li><a href="https://github.com/LukasKalbertodt/telegram-bot">telegram-bot</a></li>
+    </ul>
+    <h2>라이센스</h2>
+    MIT
+  </main>
+  <footer>
+    stylesheet: <a href="https://github.com/mblode/marx">marx</a>
+  </footer>
+</body></html>

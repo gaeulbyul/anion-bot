@@ -5,6 +5,7 @@ extern crate serde_json;
 extern crate rustc_serialize;
 extern crate telegram_bot;
 extern crate regex;
+extern crate staticfile;
 
 use std::env;
 use std::fmt;
@@ -23,7 +24,6 @@ use hyper::{
     Url,
 };
 use serde_json::Value as JsonValue;
-use rustc_serialize::json as RJson;
 
 // telegram api
 use telegram_bot::{
@@ -32,8 +32,12 @@ use telegram_bot::{
     MessageType,
     ParseMode,
 };
-
+use rustc_serialize::json as RJson;
 use regex::Regex;
+
+// homepage
+use staticfile::Static;
+use std::path::Path;
 
 const VERSION: &'static str = "v0.0.1-alpha";
 const API_URL: &'static str = "https://anion.herokuapp.com/api/";
@@ -133,7 +137,7 @@ fn fetch_anicaps(ani_id: i32) -> Result<Vec<Cap>, HyperError> {
 }
 
 fn bot_intro() -> String {
-    format!("Ani-ON 봇 {}
+    format!("Ani-ON 봇 (@ani_on_bot) {}
 **아직 불안정한 버전입니다. 예상치 못한 출력이 나오거나 (오류로 인해) 반응이 없을 수 있습니다.**
 Ani-ON 봇은 애니편성표 봇입니다. 데이터는 [애니시아](http://anissia.net)에서 가져옵니다.
 모바일 웹용 애니편성표: [Ani-ON](https://anion.herokuapp.com)
@@ -251,6 +255,7 @@ fn main() {
         post format!("/telegram-bot~{}", telegram_token) => move |req: &mut Request| -> IronResult<Response> {
             telegram_handler(&bot, req)
         },
+        get "/" => Static::new(Path::new("public/")),
     );
     Iron::new(router).http(format!("0.0.0.0:{}", &port).as_str()).expect("server fail??");
     /*

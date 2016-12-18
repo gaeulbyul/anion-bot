@@ -1,6 +1,6 @@
 [package]
 name = "AniON-Bot"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Gaeulbyul <aeiou256@gmail.com>"]
 
 [dependencies]
@@ -12,3 +12,4 @@ regex = "0.1"
 iron = "0.4.0"
 router = "0.2"
 rustc-serialize = "0.3"
+staticfile = "0.3.1"
